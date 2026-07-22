@@ -1,7 +1,14 @@
+import os
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-CHROMA_DIR = "/content/drive/MyDrive/FinalProject_MultiAgentAI/vectorstore/chroma_db"
+# FIX: sebelumnya hardcode ke path Google Drive Colab
+# ("/content/drive/MyDrive/..."), yang tidak ada & tidak bisa ditulis di
+# Streamlit Cloud -> menyebabkan "Permission denied (os error 13)".
+# Sekarang pakai path relatif terhadap lokasi file ini, mengacu ke folder
+# vectorstore/chroma_db yang ikut di-deploy bersama repo.
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CHROMA_DIR = os.path.join(_BASE_DIR, "vectorstore", "chroma_db")
 COLLECTION_NAME = "hr_policy_knowledge_base"
 
 _embedding_model = None

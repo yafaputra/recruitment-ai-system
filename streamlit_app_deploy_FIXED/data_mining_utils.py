@@ -1,8 +1,14 @@
+import os
 import joblib
 import pandas as pd
 
-MODEL_PATH = "/content/drive/MyDrive/FinalProject_MultiAgentAI/model/rf_tuned_hiring_model.pkl"
-FEATURE_COLUMNS_PATH = "/content/drive/MyDrive/FinalProject_MultiAgentAI/model/feature_columns.pkl"
+# FIX: sebelumnya hardcode ke path Google Drive Colab, tidak ada & tidak bisa
+# ditulis/dibaca di Streamlit Cloud -> "Permission denied (os error 13)".
+# Sekarang pakai path relatif terhadap lokasi file ini, mengacu ke folder
+# model/ yang ikut di-deploy bersama repo.
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(_BASE_DIR, "model", "rf_tuned_hiring_model.pkl")
+FEATURE_COLUMNS_PATH = os.path.join(_BASE_DIR, "model", "feature_columns.pkl")
 
 _model = None
 _feature_columns = None
