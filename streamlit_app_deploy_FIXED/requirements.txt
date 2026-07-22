@@ -1,0 +1,9 @@
+streamlit
+langgraph
+chromadb
+sentence-transformers
+scikit-learn
+pandas
+groq
+joblib
+pysqlite3-binary
